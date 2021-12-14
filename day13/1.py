@@ -1,21 +1,14 @@
-
+from parse import parse, findall
 
 dots = []
 folds = []
 
 with open('in', 'r') as f:
-    for line in f.read().splitlines():
-        try:
-            x, y = [int(x) for x in line.split(',')]
-            dots.append((x, y))
+    file_str = f.read()
 
-        except:
-            try:
-                direction, fold = line.split('=')
+    dots = [(r[0], r[1]) for r in findall("{:d},{:d}", file_str)]
 
-                folds.append((direction[-1], int(fold)))
-            except:
-                pass
+    folds = [(r[0], r[1]) for r in findall("{:1}={:d}",file_str)]
 
 
 seen = set()
