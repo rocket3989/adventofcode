@@ -16,7 +16,7 @@ for a, b in zip(start, start[1:]):
     pair_counts[a + b] += 1
 
 
-for step in range(40):
+for step in range(100):
 
     for k, v in list(pair_counts.items()):
 
@@ -25,14 +25,11 @@ for step in range(40):
 
         pair_counts[k] -= v
 
-ans = Counter()
+ans = Counter((start[0], start[-1]))
 
 for k, v in Counter(pair_counts).items():
     ans[k[0]] += v
     ans[k[1]] += v
-
-ans[start[0]] += 1
-ans[start[-1]] += 1
 
 for k in ans:
     ans[k] //= 2
