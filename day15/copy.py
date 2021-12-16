@@ -1,7 +1,6 @@
 
 mat = []
 
-
 with open('in', 'r') as f:
     for line in f.read().splitlines():
         mat.append([int(x) for x in line])
