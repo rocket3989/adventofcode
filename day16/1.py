@@ -1,3 +1,4 @@
+import math
 with open('in', 'r') as f:
     for line in f.read().splitlines():
         num = bin(int(line, 16))[2:].zfill(len(line) * 4)
@@ -64,15 +65,9 @@ def eval_bits():
                 length, val = eval_bits()
                 children.append(val)
                 package_length += length
-
-
-        prod = 1
-        for val in children:
-            prod *= val
-
         
         return package_length, [sum(children), 
-                                prod, 
+                                math.prod(children), 
                                 min(children),
                                 max(children),
                                 0,
