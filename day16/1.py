@@ -14,6 +14,16 @@ class bits:
 
 b = bits()
 
+function_lookup = [lambda x: sum(x), 
+                    lambda x: math.prod(x), 
+                    lambda x: min(x),
+                    lambda x: max(x),
+                    0,
+                    lambda x: 1 if x[0] > x[1] else 0,
+                    lambda x: 1 if x[0] < x[1] else 0,
+                    lambda x: 1 if x[0] == x[1] else 0]
+
+
 def eval_bits():
     ver = b.get_bits(3)
     
@@ -66,13 +76,6 @@ def eval_bits():
                 children.append(val)
                 package_length += length
         
-        return package_length, [sum(children), 
-                                math.prod(children), 
-                                min(children),
-                                max(children),
-                                0,
-                                1 if children[0] > children[-1] else 0,
-                                1 if children[0] < children[-1] else 0,
-                                1 if children[0] == children[-1] else 0][type_ID]
+        return package_length, function_lookup[type_ID](children)
 
-print(eval_bits())
+print(eval_bits()[1])

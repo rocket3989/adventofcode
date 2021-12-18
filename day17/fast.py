@@ -1,13 +1,13 @@
 from collections import defaultdict
 
-targx = (139, 187)
-targy= (-148, -89)
+targx = (117, 7310)
+targy= (-9546, -89)
 count = 0
 
 
 y_answers = defaultdict(set)
 
-for initalvy in range(-500, 500):
+for initalvy in range(2*targy[0], 2*-targy[0]):
 
     vy = initalvy
 
@@ -24,7 +24,7 @@ for initalvy in range(-500, 500):
             break
 
 
-for initalvx in range(500):
+for initalvx in range(targx[1] + 1):
 
     vx = initalvx
 
