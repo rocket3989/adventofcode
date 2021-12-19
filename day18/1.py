@@ -1,4 +1,4 @@
-from itertools import combinations
+from itertools import permutations
 
 with open('in', 'r') as f:
     lines = f.read().splitlines()
@@ -81,7 +81,7 @@ def search_split(node):
             node.left.value = node.value // 2
 
             node.right = Node(node)
-            node.right.value = (node.value // 2) + (1 if node.value % 2 else 0)
+            node.right.value = (1 + node.value) // 2
 
             node.value = None
         
@@ -153,10 +153,11 @@ def mag(node):
 
     return 3 * mag(node.left) + 2 * mag(node.right)
 
+print(root)
 print(mag(root))
 
 best = 0
-for a, b in combinations(lines, 2):
+for a, b in permutations(lines, 2):
     root = Node()
     root.root = True
 
